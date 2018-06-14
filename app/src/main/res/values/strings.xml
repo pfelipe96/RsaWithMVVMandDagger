@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RSAWithMVVM</string>
+    <string name="title_action_bar_activity_criptografar">Criptografar</string>
 </resources>

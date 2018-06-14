@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".criptografar.CriptografiaActivity"></activity>
+        <activity
+            android:label="@string/title_action_bar_activity_criptografar"
+            android:name=".criptografar.CriptografiaActivity"
+            android:theme="@style/AppThemeWithoutActionBar">
+        </activity>
     </application>
 
 </manifest>
