@@ -10,4 +10,85 @@
             type="com.example.paulo.rsawithmvvm.criptografar.CriptografiaViewModel"/>
     </data>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"></include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="16dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_e"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite o número E"
+                    android:inputType="numberDecimal"
+                    android:text="@{viewModel.email}"
+                    android:addTextChangedListener="@{viewModel.watcherEmail}"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_first_prime_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite o primeiro número primo"
+                    android:inputType="numberDecimal"
+                    android:text="@{viewModel.email}"
+                    android:addTextChangedListener="@{viewModel.watcherEmail}"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/input_second_prime_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite o secundo número primo"
+                    android:inputType="numberDecimal"
+                    android:text="@{viewModel.email}"
+                    android:addTextChangedListener="@{viewModel.watcherEmail}"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/text_for_encryption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Digite o texto que será criptografado"
+                    android:inputType="textEmailAddress"
+                    android:text="@{viewModel.email}"
+                    android:addTextChangedListener="@{viewModel.watcherEmail}"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_action_encryption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_button_encryption"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </layout>

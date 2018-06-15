@@ -17,4 +17,8 @@
         <item name="windowActionBar">false</item>
     </style>
 
+    <style name="SetToolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="titleTextColor">@android:color/white</item>
+        <item name="android:background">@android:color/black</item>
+    </style>
 </resources>
