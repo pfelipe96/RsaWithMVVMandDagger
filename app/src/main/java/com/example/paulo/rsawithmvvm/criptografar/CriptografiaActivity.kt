@@ -12,7 +12,7 @@ class CriptografiaActivity : AppCompatActivity(), CriptografiaActivityInterface 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val criptografiaViewModel = CriptografiaViewModel()
+        val criptografiaViewModel = CriptografiaViewModel(this)
         val binding = DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_criptografia)
         binding.setVariable(BR.viewModel, criptografiaViewModel)
     }
