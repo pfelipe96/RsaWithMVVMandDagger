@@ -8,7 +8,6 @@
             name="viewModel"
             type="com.example.paulo.rsawithmvvm.criptografar.CriptografiaViewModel"/>
     </data>
-
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"

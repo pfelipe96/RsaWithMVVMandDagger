@@ -5,7 +5,6 @@ import android.databinding.ObservableField
 import android.text.Editable
 import android.text.TextWatcher
 import java.math.BigDecimal
-import java.text.FieldPosition
 
 class CriptografiaViewModel(criptografiaActivity: CriptografiaActivity): CriptografiaViewHolderInterface {
 
