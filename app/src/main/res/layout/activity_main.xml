@@ -15,24 +15,31 @@
 
         <include layout="@layout/toolbar"></include>
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/send_encrypt"
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Criptografar"
-            android:textAlignment="center"
-            style="@style/RaisedButton"
-            android:onClick="@{viewModel::onClick}"/>
+            android:orientation="vertical"
+            android:layout_margin="16dp">
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/send_decrypt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descriptografar"
-            android:textAlignment="center"
-            style="@style/RaisedButton"
-            android:onClick="@{viewModel::onClick}"/>
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/send_encrypt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Criptografar"
+                android:textAlignment="center"
+                style="@style/RaisedButton"
+                android:onClick="@{viewModel::onClick}"/>
 
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/send_decrypt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descriptografar"
+                android:textAlignment="center"
+                style="@style/RaisedButton"
+                android:onClick="@{viewModel::onClick}"/>
+
+        </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>
 

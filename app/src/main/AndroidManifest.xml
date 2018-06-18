@@ -7,8 +7,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round">
-
-        <activity android:name=".mainActivity.MainActivity"
+        <activity
+            android:name=".mainActivity.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeWithoutActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +21,19 @@
 
         <activity
             android:name=".criptografar.CriptografiaActivity"
+            android:label="@string/action_bar_title_encryption"
+            android:parentActivityName=".mainActivity.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeWithoutActionBar">
         </activity>
 
+        <activity
+            android:name=".descriptografar.DescriptografiaActivty"
+            android:label="@string/action_bar_title_decryption"
+            android:parentActivityName=".mainActivity.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeWithoutActionBar">
+        </activity>
     </application>
 
 </manifest>

@@ -14,6 +14,7 @@ class CriptografiaActivity : AppCompatActivity(), CriptografiaActivityInterface 
         setSupportActionBar(toolbar_id)
         supportActionBar?.title = getString(R.string.action_bar_title_encryption)
 
+
         val binding = DataBindingUtil.setContentView<ActivityCriptografiaBinding>(this, R.layout.activity_criptografia)
         binding.viewModel = CriptografiaViewModel(this)
         binding.executePendingBindings()
