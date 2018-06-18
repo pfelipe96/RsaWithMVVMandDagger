@@ -18,7 +18,6 @@
         </activity>
 
         <activity
-            android:label="@string/title_action_bar_activity_criptografar"
             android:name=".criptografar.CriptografiaActivity"
             android:theme="@style/AppThemeWithoutActionBar">
         </activity>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <variable
@@ -14,108 +13,120 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.LinearLayoutCompat
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <include layout="@layout/toolbar"></include>
+            android:layout_height="match_parent">
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="16dp">
+                android:orientation="vertical">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_key_public"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/input_e"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Digite o número E"
-                        android:text="@{viewModel.keyPublic}"
-                        android:inputType="numberDecimal"
-                        android:addTextChangedListener="@{viewModel.watcherKeyPublic}"/>
-
-                </android.support.design.widget.TextInputLayout>
+                <include layout="@layout/toolbar"></include>
 
                 <android.support.v7.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_margin="16dp">
 
                     <android.support.design.widget.TextInputLayout
-                        android:id="@+id/text_input_layout_first_prime"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="4dp">
+                        android:id="@+id/text_input_layout_key_public"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
                         <android.support.v7.widget.AppCompatEditText
-                            android:id="@+id/input_first_prime_number"
+                            android:id="@+id/input_e"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Primeiro número primo"
+                            android:hint="Digite a chave pública"
+                            android:text="@{viewModel.keyPublic}"
                             android:inputType="numberDecimal"
-                            android:text="@{viewModel.firstPrime}"
-
-                            android:addTextChangedListener="@{viewModel.watcherFirstPrime}" />
+                            android:addTextChangedListener="@{viewModel.watcherKeyPublic}"/>
 
                     </android.support.design.widget.TextInputLayout>
 
-                    <android.support.design.widget.TextInputLayout
-                        android:id="@+id/text_input_layout_first_second"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginLeft="4dp">
-
-                        <android.support.v7.widget.AppCompatEditText
-                            android:id="@+id/input_second_prime_number"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Segundo número primo"
-                            android:inputType="numberDecimal"
-                            android:text="@{viewModel.secondPrime}"
-                            android:addTextChangedListener="@{viewModel.watcherSecondPrime}"/>
-
-                    </android.support.design.widget.TextInputLayout>
-
-                </android.support.v7.widget.LinearLayoutCompat>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/text_input_layout_text_for_encryption"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/text_for_encryption"
+                    <android.support.v7.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Digite o texto que será criptografado"
-                        android:text="@{viewModel.textForEncryption}"
-                        android:addTextChangedListener="@{viewModel.watcherTextForEncryption}"/>
+                        android:orientation="horizontal">
 
-                </android.support.design.widget.TextInputLayout>
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/text_input_layout_first_prime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginRight="4dp">
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Texto Criptogrado"/>
+                            <android.support.v7.widget.AppCompatEditText
+                                android:id="@+id/input_first_prime_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Primeiro número primo"
+                                android:inputType="numberDecimal"
+                                android:text="@{viewModel.firstPrime}"
 
-                <android.support.v7.widget.AppCompatTextView
-                    android:layout_marginTop="8dp"
-                    android:id="@+id/text_already_encrypted"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{viewModel.textAlreadyEncryptionn}" />
+                                android:addTextChangedListener="@{viewModel.watcherFirstPrime}" />
 
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:id="@+id/text_input_layout_first_second"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="4dp">
+
+                            <android.support.v7.widget.AppCompatEditText
+                                android:id="@+id/input_second_prime_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Segundo número primo"
+                                android:inputType="numberDecimal"
+                                android:text="@{viewModel.secondPrime}"
+                                android:addTextChangedListener="@{viewModel.watcherSecondPrime}"/>
+
+                        </android.support.design.widget.TextInputLayout>
+
+                    </android.support.v7.widget.LinearLayoutCompat>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/text_input_layout_text_for_encryption"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/text_for_encryption"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Digite o texto que será criptografado"
+                            android:text="@{viewModel.textForEncryption}"
+                            android:addTextChangedListener="@{viewModel.watcherTextForEncryption}"/>
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_marginTop="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:text="Texto Criptogrado:"/>
+
+                    <android.support.design.internal.BaselineLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorAccent">
+                    </android.support.design.internal.BaselineLayout>
+
+                    <android.support.v7.widget.AppCompatTextView
+                            android:layout_marginTop="8dp"
+                            android:id="@+id/text_already_encrypted"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.textAlreadyEncryptionn}" />
+
+                </android.support.v7.widget.LinearLayoutCompat>
             </android.support.v7.widget.LinearLayoutCompat>
-        </android.support.v7.widget.LinearLayoutCompat>
+        </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>
 </layout>
