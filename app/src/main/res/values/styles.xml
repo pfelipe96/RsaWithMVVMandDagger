@@ -21,4 +21,12 @@
         <item name="titleTextColor">@android:color/white</item>
         <item name="android:background">@color/colorPrimary</item>
     </style>
+
+    <style name="RaisedButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+
 </resources>

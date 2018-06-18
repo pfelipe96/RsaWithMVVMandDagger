@@ -125,6 +125,13 @@
                             android:layout_height="wrap_content"
                             android:text="@{viewModel.textAlreadyEncryptionn}" />
 
+                    <android.support.v7.widget.AppCompatButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/RaisedButton"
+                        android:text="Copiar"
+                        android:onClick="@{viewModel::onClick}"/>
+
                 </android.support.v7.widget.LinearLayoutCompat>
             </android.support.v7.widget.LinearLayoutCompat>
         </android.support.v4.widget.NestedScrollView>

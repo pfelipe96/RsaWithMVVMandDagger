@@ -12,11 +12,10 @@ class CriptografiaActivity : AppCompatActivity(), CriptografiaActivityInterface 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar_id)
-        toolbar_id.title = getString(R.string.action_bar_title_encryption)
+        supportActionBar?.title = getString(R.string.action_bar_title_encryption)
 
-        val criptografiaViewModel = CriptografiaViewModel(this)
         val binding = DataBindingUtil.setContentView<ActivityCriptografiaBinding>(this, R.layout.activity_criptografia)
-        binding.viewModel = criptografiaViewModel
+        binding.viewModel = CriptografiaViewModel(this)
         binding.executePendingBindings()
     }
 }
