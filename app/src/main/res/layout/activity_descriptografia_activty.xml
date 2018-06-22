@@ -14,44 +14,54 @@
         <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_margin="16dp">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/text_input_layout_key_public"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/input_e"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Digite a chave pública"
-                    android:text="@{viewModel.keyPublic}"
-                    android:inputType="numberDecimal"
-                    android:addTextChangedListener="@{viewModel.watcherKeyPublic}"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
                 android:id="@+id/text_input_layout_function_totiente"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/input_fx"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Digite a chave pública"
+                    android:hint="Digite a função totiente"
                     android:text="@{viewModel.functionTotiente}"
                     android:inputType="numberDecimal"
                     android:addTextChangedListener="@{viewModel.watcherFunctionTotiente}"/>
 
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/linear_layout_with_prime_numbers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:visibility="@{viewModel.linearLayoutNumbersPrime ? View.VISIBLE : View.GONE}">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/text_first_prime_number"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.textFirstNumberPrime}"
+                    />
+
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/text_second_prime_number"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.textSecondNumberPrime}"
+                    />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
         </android.support.v7.widget.LinearLayoutCompat>
+
     </android.support.design.widget.CoordinatorLayout>
 
 </layout>

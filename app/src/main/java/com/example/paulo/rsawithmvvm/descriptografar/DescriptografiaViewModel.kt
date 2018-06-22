@@ -3,44 +3,59 @@ package com.example.paulo.rsawithmvvm.descriptografar
 import android.databinding.ObservableField
 import android.text.Editable
 import android.text.TextWatcher
+import java.util.*
 
 class DescriptografiaViewModel{
 
-    val keyPublic = ObservableField<String>()
+//    val keyPublic = ObservableField<String>()
     val functionTotiente = ObservableField<String>()
+    val textFirstNumberPrime = ObservableField<String>()
+    val textSecondNumberPrime = ObservableField<String>()
+    val linearLayoutNumbersPrime = ObservableField<Boolean>(false)
 
-    private var firstNumberPrime = 0
-    private var secondNumberPrime = 0
+    private lateinit var timer: Timer
 
-    val watcherKeyPublic: TextWatcher = object: TextWatcher{
-        override fun afterTextChanged(s: Editable?) {
-            s?.let {
-                keyPublic.set(it.toString())
-            }
+//    val watcherKeyPublic: TextWatcher = object: TextWatcher{
+//        override fun afterTextChanged(s: Editable?) {
+//            s?.let {
+//                keyPublic.set(it.toString())
+//            }
+//        }
+//
+//        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//        }
+//
+//        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//        }
+//    }
 
-            lookForKeyPrivate()
-        }
-
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-        }
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        }
-    }
     val watcherFunctionTotiente: TextWatcher = object: TextWatcher{
         override fun afterTextChanged(s: Editable?) {
             s?.let {
                 functionTotiente.set(it.toString())
             }
+
+            timer = Timer()
+            timer.schedule(object : TimerTask() {
+                override fun run() {
+                    s?.let {
+                        lookForKeyPrivate()
+                    }
+                }
+            }, 600)
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            if (timer != null) {
+                timer.cancel()
+            }
         }
-
     }
+
 
     private fun lookForKeyPrivate(){
         val functionTotienteToInt = functionTotiente.get().toString().toInt()
@@ -71,8 +86,9 @@ class DescriptografiaViewModel{
                         }
                     }
                     if(firstNumberPrimeLocal != -1 && secondNumberPrimeLocal != -1){
-                        firstNumberPrime = firstNumberPrimeLocal
-                        secondNumberPrime = secondNumberPrimeLocal
+                        textFirstNumberPrime.set(firstNumberPrimeLocal.toString())
+                        textSecondNumberPrime.set(secondNumberPrimeLocal.toString())
+                        linearLayoutNumbersPrime.set(true)
                     }
 
                     firstNumberPrimeLocal = 0
@@ -81,5 +97,7 @@ class DescriptografiaViewModel{
             }
         }
     }
+
+
 
 }
