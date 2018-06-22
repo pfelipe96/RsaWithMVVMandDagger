@@ -38,17 +38,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="8dp"
-                android:visibility="@{viewModel.linearLayoutNumbersPrime ? View.VISIBLE : View.GONE}">
+                android:layout_marginTop="8dp">
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/text_first_prime_number"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.textFirstNumberPrime}"
-                    />
-
+                    android:text="@{viewModel.textFirstNumberPrime}" />
 
                 <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/text_second_prime_number"
@@ -59,9 +56,6 @@
                     />
 
             </android.support.v7.widget.LinearLayoutCompat>
-
         </android.support.v7.widget.LinearLayoutCompat>
-
     </android.support.design.widget.CoordinatorLayout>
-
 </layout>
