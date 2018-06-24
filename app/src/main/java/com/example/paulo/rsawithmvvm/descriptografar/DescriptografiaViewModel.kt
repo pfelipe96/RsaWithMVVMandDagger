@@ -1,17 +1,22 @@
 package com.example.paulo.rsawithmvvm.descriptografar
 
+import android.databinding.Bindable
 import android.databinding.ObservableField
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import java.util.*
+import android.databinding.BindingAdapter
 
-class DescriptografiaViewModel{
+
+
+class DescriptografiaViewModel: Observable(){
 
 //    val keyPublic = ObservableField<String>()
     val functionTotiente = ObservableField<String>()
     val textFirstNumberPrime = ObservableField<String>()
     val textSecondNumberPrime = ObservableField<String>()
-//    val linearLayoutNumbersPrime = ObservableField<Boolean>(false)
+//    val linearLayoutKeyPublic = ObservableBoolean()
     private lateinit var timer: Timer
 
 //    val watcherKeyPublic: TextWatcher = object: TextWatcher{
@@ -59,7 +64,7 @@ class DescriptografiaViewModel{
 
 
     private fun lookForKeyPrivate() {
-        if (functionTotiente.get().toString().isNullOrEmpty()) {
+        if (!functionTotiente.get().toString().isNullOrEmpty()) {
             val functionTotienteToInt = functionTotiente.get().toString().toInt()
 
             var firstNumberPrimeLocal = 0
@@ -90,7 +95,7 @@ class DescriptografiaViewModel{
                         if (firstNumberPrimeLocal != -1 && secondNumberPrimeLocal != -1) {
                             textFirstNumberPrime.set(firstNumberPrimeLocal.toString())
                             textSecondNumberPrime.set(secondNumberPrimeLocal.toString())
-//                        linearLayoutNumbersPrime.set(true)
+//                            linearLayoutKeyPublic.set()
                         }
 
                         firstNumberPrimeLocal = 0
@@ -100,4 +105,21 @@ class DescriptografiaViewModel{
             }
         }
     }
+
+    @BindingAdapter("android:visibility")
+    fun setVisibility(view: View, value: Boolean) {
+        if(value)
+            view.visibility = View.GONE
+        else
+            view.visibility = View.VISIBLE
+    }
+
+    @Bindable
+    fun getSaleVisibility(): Int {
+        return  if(textFirstNumberPrime.get().toString().isNullOrEmpty() && textSecondNumberPrime.toString().isNullOrEmpty())
+            View.GONE
+        else
+            View.VISIBLE
+    }
+
 }
