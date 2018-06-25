@@ -14,7 +14,7 @@ class DescriptografiaActivty : AppCompatActivity() {
 
         setSupportActionBar(toolbar_id)
 
-        val binding = DataBindingUtil.setContentView<ActivityDescriptografiaActivtyBinding>(this,R.layout.activity_descriptografia_activty)
+        val binding = DataBindingUtil.setContentView<ActivityDescriptografiaActivtyBinding>(this, R.layout.activity_descriptografia_activty)
         binding.viewModel = DescriptografiaViewModel()
         binding.executePendingBindings()
     }
