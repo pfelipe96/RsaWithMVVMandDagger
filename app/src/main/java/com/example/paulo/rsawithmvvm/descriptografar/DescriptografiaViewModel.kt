@@ -12,22 +12,46 @@ class DescriptografiaViewModel{
 
     val keyPublic = ObservableField<String>()
     val functionTotiente = ObservableField<String>()
+
     val textFirstNumberPrime = ObservableField<String>()
     val textSecondNumberPrime = ObservableField<String>()
+    val textKeyPrivate = ObservableField<String>()
+    val textDecrypted = ObservableField<String>()
+
+
+    val textEncrypted = ObservableField<String>()
     val linearLayoutKeyPublic = ObservableBoolean(false)
-    private lateinit var timer: Timer
+    val linearLayoutEncrypted = ObservableBoolean(false)
+
+    private lateinit var timerFt: Timer
+    private lateinit var timerKy: Timer
+
 
     val watcherKeyPublic: TextWatcher = object: TextWatcher{
         override fun afterTextChanged(s: Editable?) {
             s?.let {
                 keyPublic.set(it.toString())
             }
+
+            timerKy = Timer()
+            timerKy.schedule(object : TimerTask() {
+                override fun run() {
+                    s.let {
+                        lookForKeyOtherPrivate()
+                    }
+                }
+            }, 600)
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
         }
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            try {
+                timerKy.let { timerKy.cancel() }
+            }catch (exception: Exception){
+                exception.printStackTrace()
+            }
         }
     }
 
@@ -37,8 +61,8 @@ class DescriptografiaViewModel{
                 functionTotiente.set(it.toString())
             }
 
-            timer = Timer()
-            timer.schedule(object : TimerTask() {
+            timerFt = Timer()
+            timerFt.schedule(object : TimerTask() {
                 override fun run() {
                     s.let {
                         lookForKeyPrivate()
@@ -53,10 +77,27 @@ class DescriptografiaViewModel{
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             try {
-                timer.let { timer.cancel() }
+                timerFt.let { timerFt.cancel() }
             }catch (exception: Exception){
                 exception.printStackTrace()
             }
+        }
+    }
+
+    val watcherTextEncrypted: TextWatcher = object: TextWatcher{
+        override fun afterTextChanged(s: Editable?) {
+            s?.let {
+                functionTotiente.set(it.toString())
+            }
+        }
+
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+        }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
         }
     }
 
@@ -104,6 +145,22 @@ class DescriptografiaViewModel{
         }
     }
 
+    private fun lookForKeyOtherPrivate(){
+        if (!functionTotiente.get().toString().isNullOrEmpty()) {
+            val functionTotienteToInt = functionTotiente.get().toString().toInt()
+            val keyPublicToInt = keyPublic.get().toString().toInt()
+            for (i in 0..functionTotienteToInt){
+                if((keyPublicToInt * i) % functionTotienteToInt == 1){
+                    textKeyPrivate.set(i.toString())
+                }
+            }
+        }
+    }
+
+    private fun decryptText(){
+
+    }
+
 
     companion object {
         @JvmStatic
@@ -114,14 +171,6 @@ class DescriptografiaViewModel{
             else
                 view.visibility = View.GONE
         }
-    }
-
-
-    fun getSaleVisibility(): Int {
-        return  if(textFirstNumberPrime.get().toString().isNullOrEmpty() && textSecondNumberPrime.toString().isNullOrEmpty())
-            View.GONE
-        else
-            View.VISIBLE
     }
 
 }
