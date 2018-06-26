@@ -1,12 +1,15 @@
 package com.example.paulo.rsawithmvvm.descriptografar
 
+import android.annotation.SuppressLint
 import android.databinding.BindingAdapter
 import android.databinding.ObservableBoolean
 import android.databinding.ObservableField
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import java.math.BigDecimal
 import java.util.*
+import kotlin.collections.ArrayList
 
 class DescriptografiaViewModel{
 
@@ -17,14 +20,14 @@ class DescriptografiaViewModel{
     val textSecondNumberPrime = ObservableField<String>()
     val textKeyPrivate = ObservableField<String>()
     val textDecrypted = ObservableField<String>()
-
-
     val textEncrypted = ObservableField<String>()
+
     val linearLayoutKeyPublic = ObservableBoolean(false)
     val linearLayoutEncrypted = ObservableBoolean(false)
 
     private lateinit var timerFt: Timer
     private lateinit var timerKy: Timer
+    private val listTextDecrypted = ArrayList<String>()
 
 
     val watcherKeyPublic: TextWatcher = object: TextWatcher{
@@ -87,7 +90,8 @@ class DescriptografiaViewModel{
     val watcherTextEncrypted: TextWatcher = object: TextWatcher{
         override fun afterTextChanged(s: Editable?) {
             s?.let {
-                functionTotiente.set(it.toString())
+                textEncrypted.set(it.toString())
+                decryptText()
             }
         }
 
@@ -152,16 +156,57 @@ class DescriptografiaViewModel{
             for (i in 0..functionTotienteToInt){
                 if((keyPublicToInt * i) % functionTotienteToInt == 1){
                     textKeyPrivate.set(i.toString())
+                    linearLayoutEncrypted.set(true)
                 }
             }
         }
     }
 
+    @SuppressLint("UseValueOf")
     private fun decryptText(){
+        if(!textEncrypted.get().toString().isNullOrEmpty()){
 
+            val textEncryptedSlipt = textEncrypted.get().toString().split(" ")
+            val multiplyNumberPrime = BigDecimal(textFirstNumberPrime.get().toString().toInt() * textSecondNumberPrime.get().toString().toInt())
+            val inverseKeyPublicToInt = textKeyPrivate.get().toString().toInt()
+
+            textEncryptedSlipt.forEachIndexed{ index, it ->
+                if(it.length >= 2) {
+                    if(listTextDecrypted.size == index+1) {
+                        if (listTextDecrypted[index].isNullOrEmpty()) {
+                            calculateDecrypted(inverseKeyPublicToInt, multiplyNumberPrime, index, it)
+                        }
+                    }else{
+                        calculateDecrypted(inverseKeyPublicToInt, multiplyNumberPrime, index, it)
+                    }
+                }
+            }
+
+            textDecrypted.set(listTextDecrypted.toString()
+                    .replace("[","")
+                    .replace(",", "")
+                    .replace("]","")
+                    .replace(" ", "")
+            )
+        }
+    }
+
+    fun calculateDecrypted(inverseKeyPublicToInt: Int, multiplyNumberPrime: BigDecimal, index: Int, it: String){
+        val calculatePow = BigDecimal(it.toInt()).pow(inverseKeyPublicToInt)
+        val calculateMod = calculatePow.remainder(multiplyNumberPrime).intValueExact()
+        if()
+        if (calculateMod <= 127) {
+            val convertIntToChar = calculateMod.toChar()
+            listTextDecrypted.add(index, convertIntToChar.toString())
+        }
     }
 
 
+//    if(it.length > 2) {
+//        val calculatePow = BigDecimal(it.toInt()).pow(inverseKeyPublicToInt)
+//        val calculateMod = Integer(calculatePow.remainder(multiplyNumberPrime).intValueExact())
+//        listTextDecrypted.add(calculateMod.toString())
+//    }
     companion object {
         @JvmStatic
         @BindingAdapter("android:visibility")

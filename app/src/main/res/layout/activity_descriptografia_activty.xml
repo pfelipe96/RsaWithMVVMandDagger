@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Digite o texto criptogrado"
                     android:text="@{viewModel.textEncrypted}"
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:addTextChangedListener="@{viewModel.watcherTextEncrypted}"/>
 
             </android.support.design.widget.TextInputLayout>
