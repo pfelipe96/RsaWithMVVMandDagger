@@ -10,6 +10,8 @@ import android.view.View
 import java.math.BigDecimal
 import java.util.*
 import kotlin.collections.ArrayList
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 
 class DescriptografiaViewModel{
 
@@ -194,7 +196,7 @@ class DescriptografiaViewModel{
     fun calculateDecrypted(inverseKeyPublicToInt: Int, multiplyNumberPrime: BigDecimal, index: Int, it: String){
         val calculatePow = BigDecimal(it.toInt()).pow(inverseKeyPublicToInt)
         val calculateMod = calculatePow.remainder(multiplyNumberPrime).intValueExact()
-        if()
+
         if (calculateMod <= 127) {
             val convertIntToChar = calculateMod.toChar()
             listTextDecrypted.add(index, convertIntToChar.toString())
@@ -211,10 +213,25 @@ class DescriptografiaViewModel{
         @JvmStatic
         @BindingAdapter("android:visibility")
         fun setVisibility(view: View, value: Boolean) {
-            if(value)
-                view.visibility = View.VISIBLE
+            if(value) {
+                view.apply{
+                    animate().alpha(1f).setListener(object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            this@apply.alpha = 1f
+                            visibility = View.VISIBLE
+                        }
+                    })
+                }
+            }
             else
-                view.visibility = View.GONE
+                view.apply {
+                    animate().alpha(0f).setListener(object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            this@apply.alpha = 1f
+                            this@apply.visibility = View.GONE
+                        }
+                    })
+                }
         }
     }
 
