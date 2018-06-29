@@ -223,10 +223,10 @@ class DescriptografiaViewModel {
                 }
             } else
                 view.apply {
+                    this@apply.visibility = View.GONE
                     animate().alpha(0f).setListener(object : AnimatorListenerAdapter() {
                         override fun onAnimationEnd(animation: Animator) {
                             this@apply.alpha = 1f
-                            this@apply.visibility = View.GONE
                         }
                     })
                 }
