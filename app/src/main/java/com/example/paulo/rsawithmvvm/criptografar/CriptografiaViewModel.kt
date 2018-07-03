@@ -31,6 +31,7 @@ class CriptografiaViewModel(criptografiaActivity: CriptografiaActivity): Criptog
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         }
     }
+
     val watcherFirstPrime: TextWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
             firstPrime.set(s.toString())
@@ -42,6 +43,7 @@ class CriptografiaViewModel(criptografiaActivity: CriptografiaActivity): Criptog
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         }
     }
+
     val watcherSecondPrime: TextWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
             secondPrime.set(s.toString())
@@ -53,6 +55,7 @@ class CriptografiaViewModel(criptografiaActivity: CriptografiaActivity): Criptog
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         }
     }
+
     val watcherTextForEncryption: TextWatcher = object : TextWatcher {
         override fun afterTextChanged(s: Editable?) {
             s?.let{
