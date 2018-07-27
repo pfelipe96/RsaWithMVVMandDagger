@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.example.paulo.rsawithmvvm.R
 import com.example.paulo.rsawithmvvm.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), MainActivityInterface {
+clasMainActivity : AppCompatActivity(), MainActivityInterface {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

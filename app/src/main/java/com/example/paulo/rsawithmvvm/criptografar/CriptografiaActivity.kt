@@ -18,7 +18,6 @@ class CriptografiaActivity : AppCompatActivity(), CriptografiaActivityInterface 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-
         val binding = DataBindingUtil.setContentView<ActivityCriptografiaBinding>(this, R.layout.activity_criptografia)
         binding.viewModel = CriptografiaViewModel(this)
         binding.executePendingBindings()
